@@ -1,5 +1,5 @@
 {
-  "name": "Syndivia-Token",
+  "name": "syndivia_token",
   "version": "1.0.0",
   "description": "DApp to control Syndivia token",
   "main": "truffle-config.js",
@@ -11,8 +11,10 @@
     "chai-as-promised": "^7.1.1",
     "chai-bignumber": "^2.0.2",
     "ethers": "^4.0.49",
-    "require": "^0.4.4",
     "truffle": "^5.1.65",
     "truffle-contract": "^4.0.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.0"
   }
 }
