@@ -1,19 +1,31 @@
-const provider = new ethers.providers.Web3Provider(window.ethereum)
+let accounts = []
+let connectbtn = document.querySelector(".connected")
+connectbtn.addEventListener("click", function() {
+    getaccount()
+    connectbtn.innerHTML = accounts + " connected"
+})
+async function getaccount() {
+    accounts = await ethereum.request({ method: "eth_requestAccounts" })
+}
 
-// MetaMask requires requesting permission to connect users accounts
-await provider.send("eth_requestAccounts", []);
 
-// The MetaMask plugin also allows signing transactions to
-// send ether and pay to change state within the blockchain.
-// For this, you need the account signer...
-const signer = provider.getSigner()
-
-let sendrqstbtn = document.querySelector(". sendrequest")
-let container = document.querySelector(". container")
+let sendrqstbtn = document.querySelector(".sendrequest")
+let container = document.querySelector(".container")
+let balanceofbtn = document.querySelector(".balanceOf")
+let inputaddress = document.querySelector(".address")
 sendrqstbtn.addEventListener("click", function() {
     const sendbtn = document.createElement("button")
     sendbtn.id = "send"
     const inputAmount = document.createElement("input").setAttribute("type", "number")
     const toAddress = document.createElement("input").setAttribute("type", "text")
-    container.appendChild(snedbtn, inputAmount, toAddress)
+
+    container.appendChild(sendbtn, inputAmount, toAddress)
+})
+
+balanceofbtn.addEventListener("click", async function () {
+    if ((inputaddress.value).length == 20) {
+        const balance = await accounts.getBalance(inputaddress.value)
+        balanceofbtn.innerHTML = "balance of :" + inputaddress.value + " = " + balance
+    }
+    else {console.log("please enter an address")}
 })
