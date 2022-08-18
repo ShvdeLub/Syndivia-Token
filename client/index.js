@@ -13,6 +13,15 @@ let sendrqstbtn = document.querySelector(".sendrequest")
 let container = document.querySelector(".container")
 let balanceofbtn = document.querySelector(".balanceOf")
 let inputaddress = document.querySelector(".address")
+
+async function getBalanceOf() {
+    if ((inputaddress.value).length == 20) {
+        const balance = await accounts.getBalance(inputaddress.value)
+        balanceofbtn.innerHTML = "balance of :" + inputaddress.value + " = " + balance
+    }
+    else {console.log("please enter an address")}
+}
+
 sendrqstbtn.addEventListener("click", function() {
     const sendbtn = document.createElement("button")
     sendbtn.id = "send"
@@ -22,10 +31,3 @@ sendrqstbtn.addEventListener("click", function() {
     container.appendChild(sendbtn, inputAmount, toAddress)
 })
 
-balanceofbtn.addEventListener("click", async function () {
-    if ((inputaddress.value).length == 20) {
-        const balance = await accounts.getBalance(inputaddress.value)
-        balanceofbtn.innerHTML = "balance of :" + inputaddress.value + " = " + balance
-    }
-    else {console.log("please enter an address")}
-})
