@@ -7,16 +7,14 @@
     <title>SDV TOKEN DASHBOARD</title>
 </head>
 <body>
-    <div class="container">
-        <button class="connected">Connect</button>
-        <button class="sendrequest">MAKE SEND REQUEST</button>
-        <input type="submit" value="submit address" class="balanceOf" onclick="return getBalanceOf()">
-        <input type="text" class="address">
-    </div>
+    <!-- <div class="container"> -->
+        <button id="connected">Connect</button>
+        <button id="sendrequest">MAKE SEND REQUEST</button>
+        <button type="button" id="balanceOf" onclick="return getBalanceOf()">Get balance of : </button>
+        <input type="text" id="address">
+    <!-- </div> -->
     <script src="index.js"></script>
-    <script src="https://cdn.ethers.io/scripts/ethers-v4.min.js"
-    charset="utf-8"
-    type="text/javascript">
+    <script src="ethers.js">
 </script>
 </body>
 </html>
